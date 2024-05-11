@@ -1,5 +1,15 @@
 export const GET_RES_API_URL = "https://instafood.onrender.com/api/restaurants?lat=12.9351929&lng=77.62448069999999";
 export const RES_IMG_CDN  = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
+export const ITEM_IMG_CDN =
+  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
+
+export const SHIMMER_RES_CARDS_COUNT = 8;
+export const CDN_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+  export const GET_RESTAURANT_MENU =
+  "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Fmenu%2Fpl%3Fpage-type%3DREGULAR_MENU%26complete-menu%3Dtrue&lat=12.9716&lng=77.5946&restaurantId=16073";
+
+export const SHIMMER_MENU_ITEMS_COUNT = 4;
 export const IMG_CDN_URL = 
 "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 export const restaurantList = [
