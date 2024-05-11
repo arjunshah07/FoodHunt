@@ -1,3 +1,4 @@
+
 import { useParams } from "react-router-dom"; // import useParams for read `resId`
 import {
   swiggy_menu_api_URL,
@@ -14,7 +15,8 @@ import {useState}  from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 const RestaurantMenu = () => {
-  const { resId } = useParams(); // call useParams and get value of restaurant id using object destructuring
+  const { resId } = useParams();
+  
   const [restaurant, menuItems] = useResMenuData(
     swiggy_menu_api_URL,
     resId,
@@ -24,18 +26,20 @@ const RestaurantMenu = () => {
  const [showItems, setshowItems] = useState(true);
   const isOnline = useOnline();
   
-  // if user is not Online then return UserOffline component
-  if(!isOnline){
-    //return <UserOffline />
-  }
   const handleClick = () => {
     setshowItems(!showItems);
   }
   const dispatch = useDispatch();
-  const handleAddItem = () => {
-    dispatch(addItem("pizza"))
 
+  const handleAddItem = (item) => {
+    // Dispatch an action
+    dispatch(addItem(item));
   }
+  // if user is not Online then return UserOffline component
+  if(!isOnline){
+    //return <UserOffline />
+  }
+  
   return !restaurant ? (
     <MenuShimmer />
   ) : (
@@ -101,7 +105,7 @@ const RestaurantMenu = () => {
                       alt={item?.name}
                     />
                   )}
-                  <button className="add-btn" onClick = {handleAddItem}> ADD +</button>
+                  <button className="add-btn"  onClick={() => handleAddItem(item)}> ADD +</button>
                 </div>
               </div>
             ))}

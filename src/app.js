@@ -9,15 +9,35 @@ import Contact from "./components/Contact";
 import Login from "./components/Login";
 import { createBrowserRouter , RouterProvider , Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
-
+import UserContext from "./utils/UserContext";
+import { Provider  } from "react-redux";
+import appstore from "./utils/appstore";
+//import { AuthContextProvider } from "./utils/context/AuthContext";
 const AppLayout = () => {
-    return (
-        //one parent element
-        <>
+    const [userName, setUserName] = useState();
+
+    //authentication
+    useEffect(() => {
+      // Make an API call and send username and password
+      const data = {
+        name: "Arjun Shah",
+      };
+      setUserName(data.name);
+      
+    }, []);
+   // <UserContext.Provider value= {{loggedInUser : userName , setUserName}}>
+   //   </UserContext.Provider>
+
+    return (<Provider store = {appstore}>
+        <UserContext.Provider value={{ loggedInUser: userName}}>
+        
+        <div className="app">
         <Header/>
         <Outlet/>
         <Footer/>
-        </>
+        </div>
+        </UserContext.Provider>
+       </Provider>
     );
 }
 const appRouter = createBrowserRouter([

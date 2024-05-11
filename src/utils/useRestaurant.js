@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { GET_RESTAURANT_MENU} from "../constants";
+import { swiggy_menu_api_URL} from "../constants";
 //import { restaurantMenu } from '../config';
 
 const useRestaurant = (restaurantId) => {
@@ -12,7 +12,7 @@ const useRestaurant = (restaurantId) => {
   const getRestaurantInfo = async () => {
     try {
       /* Live Data */
-      const response = await fetch(GET_RESTAURANT_MENU + restaurantId);
+      const response = await fetch(swiggy_menu_api_URL + restaurantId);
       const res_data = await response.json();
       /* Mock Data */
       //const res_data =  restaurantMenu;

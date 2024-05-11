@@ -1,27 +1,28 @@
 import { useState } from "react";
-import ItemList from "../components/ItemList";
+import ItemList from "./ItemList";
 
-const RestaurantCategory = ({data, resInfo}) => {
-    // console.log(data)
-    // console.log(resInfo);
-
-    const [showItems, setShowItems] = useState(true);
-
-    const handleClick = () => {
-        setShowItems(!showItems);
-    }
-    return (
-        <div >
-            <div className="category-conatiner">
-            <div className="category-header" onClick={handleClick}>
-                <h3>{data.title} ({data.itemCards.length})</h3>
-                {showItems ? <i className={`fa-solid fa-chevron-up`}></i> : <i className={`fa-solid fa-chevron-down`}></i>}
-            </div>
-            {showItems && <ItemList resInfo={resInfo} items={data.itemCards} />}
-            </div>
-            <div className="menu-border"></div>
+const RestaurantCategory = ({ data, showItems, setShowIndex, dummy }) => {
+  const handleClick = () => {
+    setShowIndex();
+  };
+  return (
+    <div>
+      {/* Header */}
+      <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-4">
+        <div
+          className="flex justify-between cursor-pointer"
+          onClick={handleClick}
+        >
+          <span className="font-bold text-lg">
+            {data.title} ({data.itemCards.length})
+          </span>
+          <span>⬇️</span>
         </div>
-    )
-}
+
+        {showItems && <ItemList items={data.itemCards} dummy={dummy} />}
+      </div>
+    </div>
+  );
+};
 
 export default RestaurantCategory;

@@ -1,77 +1,45 @@
-import { useDispatch, useSelector } from "react-redux";
-import CDN_URL from "../constants";
-import { addItem, decrementQuantity, incrementQuantity, updateQuantity } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
+import { CDN_URL } from "../constants";
 
-const ItemList = ({ items, resInfo }) => {
+const ItemList = ({ items, dummy }) => {
   const dispatch = useDispatch();
-  const cartItems = useSelector((store) => store.cart.items);
 
   const handleAddItem = (item) => {
-    dispatch(addItem({ item, resInfo }));
+    // Dispatch an action
+    dispatch(addItem(item));
   };
 
-  const handleIncrement = (item) => {
-    const existingItemIndex = cartItems.findIndex(
-      (cartItem) => cartItem.card.info.id === item.card.info.id
-    );
-
-    if (existingItemIndex !== -1) {
-      // If item already exists in the cart, dispatch the incrementQuantity action
-      dispatch(incrementQuantity(existingItemIndex));
-    }
-  };
-
-  const handleDecrement = (item) => {
-    const existingItemIndex = cartItems.findIndex(
-      (cartItem) => cartItem.card.info.id === item.card.info.id
-    );
-
-    if (existingItemIndex !== -1) {
-      // If item already exists in the cart, dispatch the decrementQuantity action
-      dispatch(decrementQuantity(existingItemIndex));
-    }
-  };
-
-  // console.log(items);
   return (
-    <div className="category-item">
+    <div>
       {items.map((item) => (
-        <div className="item-container" key={item.card.info.id}>
-          <div className="item-info">
-            {item.card.info.itemAttribute.vegClassifier === "VEG" ? (
-              <i id="veg-logo" className="fa-regular fa-circle-stop"></i>
-            ) : (
-              <i id="nonveg-logo" className="fa-regular fa-square-caret-up"></i>
-            )}
-            <h3>{item.card.info.name}</h3>
-            <h4>
-              ₹
-              {item.card.info.price
-                ? item.card.info.price / 100
-                : item.card.info.defaultPrice / 100}
-            </h4>
-            <p>{item.card.info.description}</p>
+        <div
+          data-testid="foodItems"
+          key={item.card.info.id}
+          className="p-2 m-2 border-gray-200 border-b-2 text-left flex justify-between"
+        >
+          <div className="w-9/12">
+            <div className="py-2">
+              <span>{item.card.info.name}</span>
+              <span>
+                - ₹
+                {item.card.info.price
+                  ? item.card.info.price / 100
+                  : item.card.info.defaultPrice / 100}
+              </span>
+            </div>
+            <p className="text-xs">{item.card.info.description}</p>
           </div>
-          <div className="item-img">
-            <img src={CDN_URL + item.card.info.imageId} />
-            {cartItems.some(
-              (cartItem) => cartItem.card.info.id === item.card.info.id
-            ) ? (
-              // If item is in the cart, show inc-dec-counter
-              <div className="inc-dec-count menu-counter">
-                <div className="minus-counter" onClick={() => handleDecrement(item)}>-</div>
-                <span>
-                  {
-                    cartItems.find(
-                      (cartItem) => cartItem.card.info.id === item.card.info.id
-                    )?.quantity
-                  }
-                </span>
-                <div className="plus-counter" onClick={() => handleIncrement(item)}>+</div></div>
-            ) : (
-              // If item is not in the cart, show ADD button
-              <button onClick={() => handleAddItem(item)}>ADD</button>
-            )}
+          <div className="w-3/12 p-4">
+            <div className="absolute">
+              <button
+                className="p-2 mx-16 rounded-lg bg-black text-white shadow-lg"
+                onClick={() => handleAddItem(item)}
+              >
+                Add +
+              </button>
+            </div>
+            <img src={CDN_URL + item.card.info.imageId} className="w-full" />
           </div>
         </div>
       ))}

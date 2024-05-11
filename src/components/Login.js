@@ -2,12 +2,13 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Navigate } from "react-router-dom";
-import {useState } from 'react';
+import {useContext } from 'react';
+import UserContext from "../utils/UserContext";
 import logo from '../../assests/logo.png';
 import { useLocation } from 'react-router-dom';
 
 const Login = () => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useContext(UserContext);
   const {state} = useLocation();
 
   const loginUser = (values) => {
@@ -66,7 +67,7 @@ const Login = () => {
 
           <div className="pwd flex justify-center p-2.5">
             <label htmlFor="password" className="pwd-label p-2.5 w-[100px] mob:text-left mob:h-8 mob:text-sm">Password</label>
-            <Field type="password" name="password" id="pwd"/>
+            <Field type="password" name="password" id="pwd" className="outline-none p-1 text-sm h-10 w-[200px] rounded-md bg-gray mob:w-[180px] mob:h-8"/>
             <ErrorMessage name="password" component="div" />
           </div>
 

@@ -5,13 +5,19 @@ export const ITEM_IMG_CDN =
 
 export const SHIMMER_RES_CARDS_COUNT = 8;
 export const CDN_URL =
-  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
-  export const GET_RESTAURANT_MENU =
-  "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Fmenu%2Fpl%3Fpage-type%3DREGULAR_MENU%26complete-menu%3Dtrue&lat=12.9716&lng=77.5946&restaurantId=16073";
-
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
+  export const swiggy_menu_api_URL =
+  "https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=";
+ // "https://www.google-analytics.com/j/collect?v=1&_v=j101&a=2048112110&t=pageview&_s=1&dl=https%3A%2F%2Fwww.swiggy.com%2Frestaurants%2Fkhadak-singh-da-dhaba-sant-birbal-das-chauraha-indira-nagar-lucknow-860312&ul=en-us&de=UTF-8&dt=Khadak%20Singh%20Da%20Dhaba%20%7C%20Home%20delivery%20%7C%20Order%20online%20%7C%20Sant%20Birbal%20Das%20Chauraha%20Indira%20Nagar%20Lucknow&sd=24-bit&sr=1376x774&vp=1360x151&je=0&_u=QACAAEABAAAAACAAI~&jid=&gjid=&cid=1942349924.1705403964&uid=57638398&tid=0&_gid=1282126455.1714732787&_slc=1&gtm=45He4510n81MJV7Q8Qv78036788za200&gcd=13l3l3l3l1&dma=0&z=688080045";
+  export const ITEM_IMG_CDN_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
+  export const MENU_ITEM_TYPE_KEY =
+  "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
+export const RESTAURANT_TYPE_KEY =
+  "type.googleapis.com/swiggy.presentation.food.v2.Restaurant";
 export const SHIMMER_MENU_ITEMS_COUNT = 4;
 export const IMG_CDN_URL = 
-"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
+"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 export const restaurantList = [
     {
       type: "restaurant",
