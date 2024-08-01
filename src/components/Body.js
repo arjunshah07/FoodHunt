@@ -65,7 +65,7 @@ return (
       <div className="flex justify-evenly min-w-[500px] mob:min-w-[375px] h-[100px] mob:h-[50px] items-center m-auto"> 
         <input type="text" placeholder=" Search for restaurant" value={searchText}
           className="outline-none text-base mob:text-xs p-[5px] basis-[350px] mob:basis-[270px] h-[30px] rounded-md ring-1 ring-gray bg-gray" key="input-text" onChange = {(e) => setSearchText(e.target.value)}/>
-        <button className="btn btn--primary basis-[60px] mob:basis-[50px] mob:text-xs" 
+        <button className="btn btn--primary basis-[60px] mob:basis-[50px] mob:text-xs hover:bg-blue-500" 
           onClick={searchData(searchText, allRestaurants)}> Search </button>
       </div>
       </div>
@@ -75,11 +75,11 @@ return (
       </div> 
     }
     
-    {filteredRestaurants && filteredRestaurants.length > 0 ? (
+    {allRestaurants && allRestaurants.length > 0 ? (
   <div className="flex flex-wrap gap-5 justify-center">
-    {filteredRestaurants.map((restaurant) => {
+    {allRestaurants.map((restaurant) => {
       return ( <Link
-        className="basis-[250px] p-2.5 mb-2.5 mob:basis-[150px]" to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}>
+        className="basis-[450px] p-2.5 mb-2.5 mob:basis-[350px]" to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}>
       <Restrauntcard {...restaurant.info} key={restaurant.info.id} />
     </Link>)})}
   </div>

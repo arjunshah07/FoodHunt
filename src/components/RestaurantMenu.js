@@ -14,6 +14,7 @@ import useOnline from "../utils/useOnline"; // imported custom hook useOnline wh
 import {useState}  from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
+import ItemList from "./ItemList";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   
@@ -33,12 +34,16 @@ const RestaurantMenu = () => {
 
   const handleAddItem = (item) => {
     // Dispatch an action
+    
+    console.log("this is item",item);
     dispatch(addItem(item));
   }
   // if user is not Online then return UserOffline component
   if(!isOnline){
     //return <UserOffline />
   }
+  
+  console.log("this is showitems",showItems);
   
   return !restaurant ? (
     <MenuShimmer />
@@ -82,7 +87,7 @@ const RestaurantMenu = () => {
             <span className=" font-bold text-lg">{"Recommended"} ({menuItems.length}) Items</span>
             <span>⬇️</span>
           </div>
-          {showItems && <div className="menu-items-list">
+           {showItems && <div className="menu-items-list">
             {menuItems.map((item) => (
               <div className="p-2 m-2 border-gray-200 border-b-2 text-left flex justify-between" key={item?.id}>
                 <div className="w-9/12">
@@ -105,7 +110,7 @@ const RestaurantMenu = () => {
                       alt={item?.name}
                     />
                   )}
-                  <button className="add-btn"  onClick={() => handleAddItem(item)}> ADD +</button>
+                  <button className="add-btn" onClick = { () => handleAddItem (item)}> ADD +</button>
                 </div>
               </div>
             ))}

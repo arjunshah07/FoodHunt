@@ -4,12 +4,12 @@ const UserContext = createContext({
 
     user : {
         name : "Arjun" , 
-     //   email : " arjunshah@gmail.com" ,
-     //   isAuthenticated : false
+        email : " arjunshah@gmail.com" ,
+        isAuthenticated : false
     },
     loggedInUser : "Arjun Shah",
 });
 
-UserContext.displayName = "UserContext";
+//UserContext.displayName = "UserContext";
 
 export default UserContext;
